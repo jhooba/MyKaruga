@@ -35,13 +35,28 @@ public class Engine {
     GL11.glLightModel(GL11.GL_LIGHT_MODEL_AMBIENT, lightAmbient);
 
     GL11.glColorMaterial(GL11.GL_FRONT, GL11.GL_DIFFUSE);
-    FloatBuffer lightDiffuse =
+    FloatBuffer lightDiffuse1 =
         (FloatBuffer)BufferUtils.createFloatBuffer(4).put(new float[] {0.7f, 0.7f, 0.7f, 1f}).rewind();
-    GL11.glLight(GL11.GL_LIGHT1, GL11.GL_DIFFUSE, lightDiffuse);
+    GL11.glLight(GL11.GL_LIGHT1, GL11.GL_DIFFUSE, lightDiffuse1);
 
-    FloatBuffer lightSpec =
+    FloatBuffer lightSpec1 =
         (FloatBuffer)BufferUtils.createFloatBuffer(4).put(new float[] {0.8f, 0.8f, 0.8f, 1f}).rewind();
-    GL11.glLight(GL11.GL_LIGHT1, GL11.GL_SPECULAR, lightSpec);
+    GL11.glLight(GL11.GL_LIGHT1, GL11.GL_SPECULAR, lightSpec1);
+
+    FloatBuffer lightDiffuse2 =
+        (FloatBuffer)BufferUtils.createFloatBuffer(4).put(new float[] {0.2f, 0.2f, 0.9f, 0.5f}).rewind();
+    GL11.glLight(GL11.GL_LIGHT2, GL11.GL_DIFFUSE, lightDiffuse2);
+
+    GL11.glLightf (GL11.GL_LIGHT2, GL11.GL_SPOT_CUTOFF, 15.f);
+
+    FloatBuffer lightDirection2 =
+        (FloatBuffer)BufferUtils.createFloatBuffer(4).put(new float[] {0f, 0f, 10f, 1f}).rewind();
+    GL11.glLight(GL11.GL_LIGHT2, GL11.GL_SPOT_DIRECTION, lightDirection2);
+
+    GL11.glEnable(GL11.GL_DEPTH_TEST);
+    GL11.glEnable(GL11.GL_TEXTURE_2D);
+    GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+
 
 
   }
@@ -70,6 +85,7 @@ public class Engine {
       e.printStackTrace();
     }
   }
+
 
 
 }
