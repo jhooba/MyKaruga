@@ -55,7 +55,15 @@ public class Engine {
 
     GL11.glEnable(GL11.GL_DEPTH_TEST);
     GL11.glEnable(GL11.GL_TEXTURE_2D);
+    GL11.glEnable(GL11.GL_BLEND);
     GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+
+    GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL11.GL_TEXTURE_ENV_MODE, GL11.GL_MODULATE);
+
+    FloatBuffer specular =
+        (FloatBuffer)BufferUtils.createFloatBuffer(4).put(new float[] {0.9f, 0.9f, 0.9f, 1f}).rewind();
+    GL11.glMaterial(GL11.GL_FRONT, GL11.GL_SPECULAR, specular);
+    GL11.glMaterialf(GL11.GL_FRONT, GL11.GL_SHININESS, 64);
 
 
 
