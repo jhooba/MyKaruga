@@ -5,6 +5,7 @@ import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL13;
 
 import java.nio.FloatBuffer;
 
@@ -65,8 +66,16 @@ public class Engine {
     GL11.glMaterial(GL11.GL_FRONT, GL11.GL_SPECULAR, specular);
     GL11.glMaterialf(GL11.GL_FRONT, GL11.GL_SHININESS, 64);
 
+    GL11.glHint(GL11.GL_PERSPECTIVE_CORRECTION_HINT, GL11.GL_NICEST);
+    GL11.glHint(GL11.GL_LINE_SMOOTH_HINT, GL11.GL_NICEST);
 
+    GL11.glEnable(GL11.GL_POINT_SMOOTH);
+    GL11.glHint(GL11.GL_POINT_SMOOTH_HINT, GL11.GL_NICEST);
 
+    GL11.glEnable(GL11.GL_POLYGON_SMOOTH);
+    GL11.glHint(GL11.GL_POLYGON_SMOOTH_HINT, GL11.GL_NICEST);
+
+    GL11.glEnable(GL13.GL_MULTISAMPLE);
   }
 
   private static void createWindow(int screenWidth, int screenHeight, boolean fullScreen) {
